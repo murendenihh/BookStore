@@ -1,0 +1,15 @@
+.book{
+    list-style: none;
+    text-overflow: ellipsis;
+    /* width: 50%; */
+    text-align: center;
+    cursor: pointer;
+}
+.btn-primary{
+    background-color: yellow;
+    color: black;
+    border: none;
+}
+.list-group-item {
+    background-color: transparent !important;
+  }

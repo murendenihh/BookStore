@@ -1,0 +1,18 @@
+<div class="row ">
+    <div class="col">
+<h1 class="mb-4  ">Programming Books List</h1>
+
+<ul *ngIf ="isShowing" class="list-group list-group-horizontal flex-wrap">
+    <ng-container *ngFor="let singleBook of books; let i = index">
+
+   <app-book [book] ="singleBook"></app-book>
+
+</ng-container>
+</ul>
+</div>
+</div>
+
+
+
+
+

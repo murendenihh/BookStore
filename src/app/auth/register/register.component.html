@@ -1,0 +1,49 @@
+<div class="row justify-content-center">
+    <div class="col-sm-6 ">
+<form (ngSubmit)="submit()" #myForm ="ngForm" class=" ">
+    <h1 class="pb-4 text-center ">
+        Register
+    </h1>
+    <div class="mb-3">
+      <label for="email" class="form-label">Email address</label>
+      <input [(ngModel)]="registerFrom.email" #email = "ngModel" name="email" style="width: 70%;" type="email" class="form-control" id="email" placeholder ="Email Address" required email>
+      <!-- <p *ngIf="email.invalid && (email.dirty || email.touched)" style="width: 70%;" class="p-2 mt-2  text-bg-danger text-danger-emphasis ">Email field must be valid</p> -->
+      <div *ngIf="email.invalid && (email.dirty || email.touched)">
+
+        <p *ngIf="email.errors?.['required']" style="width: 70%;" class="p-2 mt-2  text-bg-danger text-danger-emphasis ">Email is required.</p>
+        <p *ngIf="email.errors?.['email']" style="width: 70%;" class="p-2 mt-2  text-bg-danger text-danger-emphasis ">Invalid email format.</p>
+      </div>
+      
+      
+    
+    </div>
+    
+    <div class="mb-3">
+      <label for="password" class="form-label">Password</label>
+      <input #password ="ngModel" [(ngModel)]="registerFrom.password" name="password" style="width: 70%;" type="password" class="form-control" id="password" placeholder ="Password" required>
+
+       <p *ngIf="password.invalid && (password.dirty || password.touched)" style="width: 70%;" class="p-2 mt-2  text-bg-danger text-danger-emphasis">Password is required</p>
+      <p *ngIf="registerFrom.password.length < 6 && password.touched" style="width: 70%;" class="p-2 mt-2  text-bg-danger text-danger-emphasis"> Password must be 6 characters long</p>
+    </div>
+    <div class="mb-3">
+        <label for="confirm" class="form-label">Confirm Password</label>
+        <input #confirm="ngModel" [(ngModel)]="registerFrom.confirm" name="confirm" style="width: 70%;" type="password" class="form-control" id="confirm" placeholder ="Confirm Password" required>
+        <p *ngIf="confirm.invalid && (confirm.dirty || confirm.touched)" style="width: 70%;" class="p-2 mt-2  text-bg-danger text-danger-emphasis">Confirm pasword is rquired</p>
+         <p *ngIf="registerFrom.password !== registerFrom.confirm && myForm.controls['confirm'].touched" style="width: 70%;" class="p-2 mt-2  text-bg-danger text-danger-emphasis">Passwords do not match.</p>
+      </div>
+      <div class="mb-5 mt-5 ">
+    <button style="width: 70%;" type="submit" [disabled]="myForm.form.invalid || registerFrom.password !== registerFrom.confirm" class="btn btn-primary">
+      
+      <ng-container *ngIf="isLoading()">
+        Loading...
+      </ng-container>
+
+      <ng-container *ngIf="!isLoading()">
+        Submit
+      </ng-container>
+    
+    </button>
+      </div>
+  </form>
+</div>
+</div>
